@@ -2,6 +2,7 @@ package com.cdr.book.service;
 
 import com.cdr.book.pojo.Book;
 import com.cdr.book.pojo.PageVo;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -15,4 +16,6 @@ public interface BookService {
     int updateBook(Book book);
 
     Book findBookById(int id);
+
+    List<Book> query(@Param("id") int id, @Param("bookName") String bookName);
 }

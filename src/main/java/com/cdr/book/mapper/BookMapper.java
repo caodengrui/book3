@@ -21,4 +21,13 @@ public interface BookMapper {
 
     @Select("select id, bookName, author, price, pic from books where id = #{id}")
     Book findBookById(int id);
+
+    @Select(value ={" <script>" +
+            " SELECT id, bookName, author, price, pic from books " +
+            " <where> 1=1 " +
+            " <if test=\"id != 0\"> AND id=#{id}</if> " +
+            " <if test=\"bookName != null\" >  AND bookName like '%${bookName}%'</if> " +
+            " </where>" +
+            " </script>"})
+    List<Book> query(@Param("id") int id, @Param("bookName") String bookName);
 }

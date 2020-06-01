@@ -6,6 +6,9 @@ import com.cdr.book.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.UnsupportedEncodingException;
+import java.util.List;
+
 @RestController
 @RequestMapping("/book")
 public class BookController {
@@ -55,4 +58,12 @@ public class BookController {
         Book book = bookService.findBookById(id);
         return book;
     }
+
+    @RequestMapping("/query")
+    public List<Book> query(@RequestBody Book book){
+        int id = book.getId();
+        String bookName = book.getBookName();
+        return bookService.query(id,bookName);
+    }
+
 }

@@ -50,4 +50,9 @@ public class BookServiceImpl implements BookService {
     public Book findBookById(int id) {
         return bookMapper.findBookById(id);
     }
+
+    @Override
+    public List<Book> query(int id, String bookName) {
+        return bookMapper.query(id, bookName);
+    }
 }
